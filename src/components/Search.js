@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Search() {
+function Search({setSearch}) {
+  // React state(s)
+  const [searchTextBox, setSearchTextBox] = useState('');
+
+  // Event Handler: Search Submit
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    setSearch(searchTextBox);
+    setSearchTextBox('');
   }
 
   return (
@@ -12,10 +17,11 @@ function Search() {
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        value={searchTextBox}
+        onChange={(e) => setSearchTextBox(e.target.value)}
+        name="searchbox" // name attribute required to find e.target.name.value
       />
-      <button type="submit">🔍</button>
+      <button type="submit" className="emoji-button">🔍</button>
     </form>
   );
 }
