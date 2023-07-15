@@ -16,7 +16,7 @@ function AddForm({onAddButton}) {
 
   // Event Handler: Make each text box a controlled input
   function handleAddFormChange(e) {
-    console.log('handleChange');
+    // console.log('handleChange');
     setFormData({...formData, [e.target.name]: e.target.value});
   }
 

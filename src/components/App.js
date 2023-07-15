@@ -30,9 +30,9 @@ function App() {
 
   // Event Handler: Add listing => frontend
   function onAddButton(formData) {
-    console.log('App FormData:', formData);
+    // console.log('App FormData:', formData);
     setListings([...listings, formData]);
-    console.log(listings);
+    // console.log(listings);
   }
   
   // Filters listings based on the search text box, set at start and on submit, does not delete the original listings array, basically treated as READ-ONLY
