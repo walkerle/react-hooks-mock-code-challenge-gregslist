@@ -7,6 +7,7 @@ function App() {
     // React state(s)
     const [listings, setListings] = useState([]);
     const [searchSubmit, setSearchSubmit] = useState('');
+    const [alphaSort, setAlphaSort] = useState(false);
 
   // Fetch data on load
   useEffect(() => {
@@ -39,19 +40,16 @@ function App() {
     fetch(`http://localhost:6001/listings`, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: listingObj
+      body: JSON.stringify(listingObj)
     })
     .then(res => res.json())
-    .then(data => console.log(data));
-
-    // Frontend render
-    setListings([...listings, listingObj]);
+    .then(data => setListings([...listings, data]));
   }
 
   return (
     <div className="app">
-      <Header onSearchSubmit={onSearchSubmit} />
-      <ListingsContainer listings={listings} onDeleteListing={onDeleteListing} searchSubmit={searchSubmit} />
+      <Header onSearchSubmit={onSearchSubmit} onAddListing={onAddListing} setAlphaSort={setAlphaSort} alphaSort={alphaSort}/>
+      <ListingsContainer listings={listings} onDeleteListing={onDeleteListing} searchSubmit={searchSubmit} alphaSort={alphaSort} />
     </div>
   );
 }
@@ -59,3 +57,4 @@ function App() {
 export default App;
 
 // Core Deliverables Complete in 68 mins
+// Advanced Deliverables Complete
